@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Add to wishlist</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'PE2_app/main.css' %}" media="screen" title="no title"  charset="utf-8">
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <h2>Create a new wishlist item!</h2>
+            <form action="/additem_process" method='POST'>
+            {% csrf_token %}
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Item/Product:</td>
+                        <td><input type="text" name ="name"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" name="submit" value="Add!">
+        </form>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <a href="/dashboard">Back</a>
+        </div>
+
+    </body>
+</html>
